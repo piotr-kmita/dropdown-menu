@@ -1,0 +1,392 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html{ 
+  box-sizing: border-box;
+}
+
+*, *:after, *:before {
+  box-sizing: inherit;
+}
+
+body {
+  width: 100%;
+  background-color: #eee;
+  font-family: Segoe UI, Frutiger, Dejavu Sans, Helvetica Neue, Arial, sans-serif;
+  color: #222;
+}
+
+
+header {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background-color: rgb(255, 255, 255);
+}
+
+
+.nav__container { 
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  flex-direction: column;	
+  justify-content: space-between;
+  align-items: stretch;
+  padding: 20px
+}
+
+
+.nav__mobile .nav__btn {
+  display: block;
+}
+
+
+.nav__mobile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.nav__logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #555
+}
+
+
+.nav__menu {
+  display: flex;
+  flex-direction: column; 
+  overflow: hidden; 
+ }
+
+.showing {
+  max-height: 37rem;  
+  transition: all .5s;
+}
+
+
+.nav__menu li {
+  list-style: none;
+  position: relative;
+  white-space: nowrap; 
+  padding: 1rem 0 0 0; 
+}
+
+
+.nav__menu li a {
+  display: block;
+  font-size: 1rem;  
+  color: #222;
+  text-decoration: none;
+}
+
+.nav__menu li a:hover {
+   color: rgb(0, 98, 163);
+
+}
+
+
+
+.nav-toggle {
+	display: block;
+	background-color: transparent;	
+	width: 40px;
+	cursor: pointer;
+	padding: 4px;
+}
+
+
+.nav-toggle span {
+	position: relative;
+	display: block;
+	height: 4px;
+	border-radius: 35px;
+	width: 100%;
+	margin-top: 0;
+	background-color: #000;
+	transition: all .25s;
+}
+
+
+.nav-toggle span.mrg {
+	margin-top: 5px;
+}
+
+.nav-toggle.open span:first-child { 
+	transform: rotate(45deg) translate(6.2px, 6.2px); 
+}
+
+
+.nav-toggle.open span:nth-child(2) {
+	width: 0%;
+	opacity: 0;
+}
+
+
+.nav-toggle.open span:last-child { 
+	transform: rotate(-45deg) translate(6.2px, -6.2px); 
+}
+
+
+
+
+/* Dropdown */ 
+
+.nav__menu .dropdown ul {
+  display: flex;
+  flex-direction: column;
+  position: static;   
+  padding: 0;
+  max-height: 0px; 
+  overflow: hidden;
+  transition: all .4s;
+}
+
+.nav__menu .dropdown ul.show {
+  max-height: 20rem;
+  transition: all .4s;
+}
+
+
+.nav__menu .dropdown li a {
+  display: block;
+  font-size: .875rem;
+  text-transform: capitalize;
+  color: #222;
+  text-decoration: none;
+}
+
+.nav__menu li a:hover {
+   color: rgb(0, 98, 163);
+
+}
+
+.nav__menu .dropdown > a:after {
+  content: "\f107";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;    
+  font-size: .875rem;
+  padding-left: 5px;
+  color: rgb(126, 126, 126);
+}
+
+.nav__menu .active.dropdown > a:after {
+  content: "\f106";
+}
+
+.nav__menu .dropdown .dropdown > a:after {
+  content: "\f107";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;    
+  font-size: .875rem;
+  padding-left: 5px;
+  color: rgb(126, 126, 126);
+}
+
+.nav__menu .dropdown .active.dropdown > a:after {
+  content: "\f106";
+}
+
+
+.menu-toggle {
+  max-height: 0;
+  overflow: hidden;
+  transition: all .4s ease;
+ 
+}
+
+.menu-toggle.active {
+  max-height: 100vh;
+  transition: all .4s ease;
+  
+}
+ 
+.resize-animation-stopper * {
+  transition: none !important;
+  animation: none !important;
+}
+
+
+@media screen and (min-width: 800px) {
+  .menu-toggle {
+    display: flex !important;    
+    max-height: 100vh;
+    overflow: visible
+  } 
+
+  .nav__container {
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    padding: 40px;
+  }
+  
+  .nav__mobile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .nav__mobile .nav__btn {
+    display: none;
+  }
+  
+  .nav__logo img {
+    width: 100%;
+    max-width: 58px;
+  }
+  
+  .nav__menu {
+    display: flex;
+    flex-direction: row;
+    max-height: 100%;
+    overflow: visible;
+  }
+  
+  .nav__menu li {
+    list-style: none;
+    position: relative;
+    white-space: nowrap;
+    padding: 1rem;
+  }
+  
+  
+  .nav__menu li a {
+    font-size: 1rem;
+    color: #222;
+    text-decoration: none;
+   }
+  
+  .nav__menu li a:hover {
+     color: rgb(0, 98, 163);
+  
+  }
+  
+  
+  /* Dropdown */
+  .nav__menu .dropdown {
+    position: relative;
+  }
+  
+  .nav__menu .dropdown ul {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: -30px;
+    opacity: 0;
+    visibility: hidden;  
+    overflow: visible; 
+    padding: 0 1rem; 
+    transition: all .4s ease ;    
+  }
+
+  
+  .nav__menu .dropdown:hover > ul { 
+    top: 100%;
+    left: 0;
+    opacity: 1;
+    visibility: visible;
+    overflow: visible;
+    padding: 0 1rem;  
+  }
+
+
+  
+  .nav__menu .dropdown ul li {
+    padding: .7rem;
+    background-color: rgb(16, 118, 201);
+    position: relative;
+  }
+  
+  .nav__menu .dropdown ul li:hover {
+    background-color: rgb(52, 147, 224);
+  }
+  
+  .nav__menu .dropdown ul li a {
+    display: block;
+    color: #fff;  
+    text-transform: capitalize;
+  }
+
+  .nav__menu .dropdown ul li a:hover {
+    display: block;
+    color: rgb(199, 224, 245); 
+  }
+  
+  .nav__menu .dropdown > a:after {
+    content: "\f107";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;    
+    font-size: .875rem;
+    padding-left: 5px;
+    color: rgb(124, 124, 124);      
+  }
+
+
+  .nav__menu .dropdown:hover > a:after {
+    content: "\f106";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;    
+    font-size: .875rem;
+    padding-left: 5px;
+    color: rgb(124, 124, 124);    
+  }
+
+
+  
+  .nav__menu .dropdown .dropdown > a:after {
+    content: "\f105";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;    
+    font-size: .875rem;
+    padding-left: 10px;
+    color: rgb(255, 255, 255);
+  }
+
+
+
+  .nav__menu .dropdown .dropdown:hover > a:after {
+    content: "\f104";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;    
+    font-size: .875rem;
+    padding-left: 10px;
+    color: rgb(255, 255, 255);
+  }
+
+
+  /* 2nd level dropdown */
+    
+  .nav__menu .dropdown .dropdown:hover > ul {
+    position: absolute;
+    top: 0;
+    right: calc(100% - 17px); 
+    left: auto;
+    opacity: 1;
+    visibility: visible; 
+  }
+
+  .nav__menu .dropdown .dropdown ul {
+    position: absolute;
+    top: 0;
+    right: calc(100% - 17px); 
+    left: auto;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .4s ease-in-out;
+  }
+
+
+   
+}
+
+
+

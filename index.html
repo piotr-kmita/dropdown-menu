@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive dropdown menu with Vanilla JavaScript</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="dist/main.css">
+</head>
+<body>  
+
+<header>
+  <div class="nav__container">
+    <div class="nav__mobile">
+      <div class="nav__logo">LOGO</div>
+      <div class="nav__btn">
+        <a aria-label="Mobile menu" class="nav-toggle fade"><span></span><span class="mrg"></span><span class="mrg"></span></a>
+      </div>
+    </div>
+      <nav class="menu-toggle">     
+        <ul class="nav__menu">
+          <li><a href="">Menu item</a></li>
+          <li><a href="">Menu item</a></li>
+          <li class="dropdown"><a href="#">Dropdown</a>
+            <ul>
+              <li><a href="">Dropdown item 1</a></li>
+              <li><a href="">Dropdown item 2</a></li>
+              <li><a href="">Dropdown item 3</a></li>
+              <li class="dropdown second-level"><a href="#">2nd level dropdown</a>
+                <ul>
+                  <li><a href="">Dropdown item 1</a></li>
+                  <li><a href="">Dropdown item 2</a></li>
+                  <li><a href="">Dropdown item 3</a></li>
+                </ul>
+              </li>
+              <li><a href="">Dropdown item 3</a></li>
+              <li><a href="">Dropdown item 4</a></li>
+            </ul>
+          </li>
+          <li><a href="">Menu item</a></li>
+          <li><a href="">Menu item</a></li>
+          <li><a href="">Menu item</a></li>
+        </ul>   
+      </nav>
+  </div>
+</header>
+
+<script src="dist/main.js"></script>
+</body>
+</html>
