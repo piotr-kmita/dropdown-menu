@@ -146,7 +146,7 @@ header {
 }
 
 .nav__menu .dropdown ul.show {
-  max-height: 20rem;
+  max-height: 40rem;
   transition: all .4s;
 }
 
