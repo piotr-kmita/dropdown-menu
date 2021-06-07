@@ -1,5 +1,5 @@
 import './style.css'
- 
+
 // Prevent showing animation on window resize
 let resizeTimer;
 window.addEventListener("resize", () => {
@@ -8,15 +8,15 @@ window.addEventListener("resize", () => {
   resizeTimer = setTimeout(() => {
     document.body.classList.remove("resize-animation-stopper");
   }, 400);
-});  
+});
 
 
 // Menu toogle on mobile
 const navToggle = document.querySelector('.nav-toggle');
 const menuToggle = document.querySelector('.menu-toggle');
 
-navToggle.addEventListener('click', function(e) {
-  this.classList.toggle('open');   
+navToggle.addEventListener('click', function (e) {
+  this.classList.toggle('open');
   menuToggle.classList.toggle('active');
   e.stopPropagation();
 });
@@ -24,22 +24,14 @@ navToggle.addEventListener('click', function(e) {
 
 
 // Dropdown toogle on mobile
-const dropdown = document.querySelector('.dropdown a');
 
-dropdown.addEventListener('click', function(e) {
-  this.nextElementSibling.classList.toggle('show');   
-  this.parentNode.classList.toggle('active');
-  e.stopPropagation();
-});
-
-
-// Second level dropdown toggle on mobile
-const deepDropdown = document.querySelector('.second-level a');
-
-deepDropdown.addEventListener('click', function(e) {
-  this.nextElementSibling.classList.toggle('show');   
-  this.parentNode.classList.toggle('active');
-  e.stopPropagation();
+window.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll(".dropdown a, .second-level a").forEach(el => {
+    el.addEventListener('click', function () {
+      this.nextElementSibling.classList.toggle('show');
+      this.parentNode.classList.toggle('active');
+    });
+  });
 });
 
 
