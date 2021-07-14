@@ -16,3 +16,6 @@ npm run build
 - Autoprefixing with PostCss
 - Development server
 - Optimization for production 
+
+## Demo
+http://www.szkicownik.com/projects/dropdown-menu
