@@ -2,6 +2,9 @@
 
 Fully responsive multilevel dropdown menu with Vanilla JavaScript.
 
+## Demo
+http://www.szkicownik.com/projects/dropdown-menu
+
 ## Installation
 npm install
 
@@ -16,6 +19,3 @@ npm run build
 - Autoprefixing with PostCss
 - Development server
 - Optimization for production 
-
-## Demo
-http://www.szkicownik.com/projects/dropdown-menu
