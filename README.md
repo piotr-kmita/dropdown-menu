@@ -3,7 +3,7 @@
 Fully responsive multilevel dropdown menu with Vanilla JavaScript.
 
 ## Demo
-http://www.szkicownik.com/projects/dropdown-menu
+http://www.szkicownik.com/demo/dropdown-menu
 
 ## Installation
 npm install
