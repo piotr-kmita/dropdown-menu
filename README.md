@@ -9,10 +9,10 @@ http://www.pkmita.pl/demo/dropdown-menu
 npm install
 
 ## Development server:
-npm run start
+npm run dev
 
 ## Build production:
-npm run build
+npm run prod
 
 ## Features:
 - Babel
