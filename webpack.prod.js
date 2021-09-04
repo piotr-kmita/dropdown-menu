@@ -1,47 +1,50 @@
 const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 
-module.exports =  {
+module.exports = {
   mode: "production",
   entry: path.resolve(__dirname, "./src"),
   output: {
-    filename: 'main.js',
-    path: path.resolve(__dirname, "./dist")
+    path: path.resolve(__dirname, "./dist"),
+    filename: 'js/main.min.js',   
   },
   optimization: {
     minimizer: [
-      new OptimizeCssAssetsPlugin(),
       new TerserPlugin()
     ]
   },
   module: {
     rules: [
-      {
-        test: /\.m?js$/,
-        exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env']
-            }
-        }
+      { 
+        test: /\.js$/, use: ['babel-loader'] 
       },
       {
-        test: /\.css$/,
+        test: /\.(scss|css)$/,
         use: [
           MiniCssExtractPlugin.loader,
-         'css-loader',
-         'postcss-loader',
-        ]
-      },
-    ],
-  },
+          {
+           loader: 'css-loader',
+           options: {         
+             url: false,
+           }
+          },
+          'postcss-loader',
+          'sass-loader',
+         ]
+       },
+     ],
+   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'main.css',
-      path: path.resolve(__dirname, './dist'),
-    }),      
-  ]  
+      filename: 'css/main.min.css',
+    }),
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, 'src') + '/template.html',
+      filename: 'index.html',
+      minify: false,
+      scriptLoading: 'blocking',
+    }),
+  ]
 }
