@@ -4,11 +4,18 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   mode: "development",
-  entry: path.resolve(__dirname, './src/index.js'),
+
+  devServer: {
+    hot: true,
+    bonjour: true,
+  },
+
+  entry: path.resolve(__dirname, './src'),
   output: {
-    filename: 'main.js',
+    filename: 'main.bundle.js',
     path: path.resolve(__dirname, "./dist")
   },
+
   module: {
     rules: [
       {
@@ -22,21 +29,31 @@ module.exports = {
         }
       },
       {
-        test: /\.css$/,
+        test: /\.(scss|css)$/,
         use: [
          'style-loader',
-         'css-loader',
-         'postcss-loader', 
+         {
+          loader: 'css-loader',
+          options: {         
+            url: false,
+          }
+        },
+         'postcss-loader',
+         'sass-loader',
         ]
+      },
+      { 
+        test: /\.(?:ico|svg|gif|png|jpg|jpeg)$/i, 
+        type: 'asset/resource' 
       },
     ],
   },
-  plugins: [
-    new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, './index.html'),
-      filename: 'index.html',
-      inject: true,
-    })   
-  ] 
+    plugins: [
+      new CleanWebpackPlugin(),
+      new HtmlWebpackPlugin({
+        template: path.resolve(__dirname, 'src') + '/template.html',
+        filename: 'index.html',
+        inject: true
+      }) 
+    ]
 }
