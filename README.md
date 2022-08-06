@@ -2,9 +2,6 @@
 
 Fully responsive multilevel dropdown menu with Vanilla JavaScript and Webpack 5.
 
-## Demo
-http://www.pkmita.pl/demo/dropdown-menu
-
 ## Installation
 npm install
 
